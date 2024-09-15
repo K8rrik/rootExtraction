@@ -2,13 +2,14 @@
     background-color: #A5C2F4;
     display: flex;
     flex-direction: column;
-    height: 45%;
     row-gap: 30px;
     padding: 30px 60px;
     border-radius: 14px;
 }
 .answer-header{
     text-align: center;
+    margin: 0;
+    font-family: "Inter", sans-serif;
 }
 .answer-fields{
     padding: 0;

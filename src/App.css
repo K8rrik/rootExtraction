@@ -1,12 +1,22 @@
-.main-container{
+.container{
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   column-gap: 20px;
 }
+.container h1{
+  font-family: "Inter", sans-serif;
+  color: #2f75e3;
+}
+.main-container{
+  display: flex;
+
+  column-gap: 20px;
+}
 .calculator{
-  height: 45%;
+
   padding: 30px 60px;
   background-color: #A5C2F4;
   border-radius: 14px;
@@ -61,4 +71,14 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 60px);
   grid-gap: 20px;
+}
+
+.decimal-places{
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  color: #2f75e3;
 }

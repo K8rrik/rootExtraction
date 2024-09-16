@@ -1,17 +1,31 @@
 import "./answers.css"
 import './App.css'
 import {useState} from "react";
-import {complex,sqrt} from "mathjs"
+import {complex, sqrt} from "mathjs"
 import {simplify,sqrt as sqrtAlgebrite} from "algebrite"
+import {useTranslation} from "react-i18next"
+import Ilanguage from "../public/locales/images/language.svg"
 
 
 function App() {
+    const {t, i18n} = useTranslation();
+    const changeLanguage = (language) => {
+        i18n.changeLanguage(language);
+        setLanguageBlock(false)
+    }
 
 
+    const [languageBlock, setLanguageBlock] = useState(true)
 
+    const changeLanguageBlock = () => {
+        setLanguageBlock(!languageBlock)
+    }
     const [inputValue, setInputValue] = useState('')
     const [outputValue, setOutputValue] = useState([])
     const [decimalPlaces, setDecimalPlaces] = useState(2)
+
+
+
     const extraction = () => {
         try {
             const trigPattern = /(sin|cos|tan|cot|sec|csc)\s*\(\s*[^)\s][^)]*\s*\)/i;
@@ -74,13 +88,28 @@ function App() {
     }
   return (
       <div className="container">
-          <h1>Извелечение квадратного корня</h1>
+          <h1>{t('programNameHeader')}</h1>
           <div className="main-container">
+
+
               <div className="calculator">
+                  <button onClick={changeLanguageBlock} className="settings"><img className="settings" src={Ilanguage}/>
+                  </button>
+                  <ul className={`languageCahnger ${languageBlock ? "language-menu-active" : "language-menu"}`}>
+                      <li>
+                          <button onClick={() => changeLanguage('ru')}>RU</button>
+                      </li>
+                      <li>
+                          <button onClick={() => changeLanguage('en')}>ENG</button>
+                      </li>
+                      <li>
+                          <button onClick={() => changeLanguage('chn')}>CHN</button>
+                      </li>
+                  </ul>
                   <div className="graphic-input">
                       <input
                           type="text"
-                          placeholder="Введите число, букву или формулу"
+                          placeholder={t('inputPlaceholder')}
                           value={inputValue}
                           onChange={handleChange}
                       />
@@ -105,7 +134,7 @@ function App() {
 
                       </div>
                       <div className="buttons-nums">
-                      <button onClick={() => handleChangeKeyboard(inputValue + '1')}>1</button>
+                          <button onClick={() => handleChangeKeyboard(inputValue + '1')}>1</button>
                           <button onClick={() => handleChangeKeyboard(inputValue + '2')}>2</button>
                           <button onClick={() => handleChangeKeyboard(inputValue + '3')}>3</button>
                           <button onClick={() => handleChangeKeyboard(inputValue + '4')}>4</button>
@@ -118,11 +147,11 @@ function App() {
                   </div>
               </div>
               <div className="answers">
-                  <h3 className="answer-header">Ответы:</h3>
+                  <h3 className="answer-header">{t('answersHeader')}</h3>
                   <ul className="answer-fields">
-                      {outputValue.map((value,index) => {
-                            return(
-                                <li key={index} className="answer-field">{value}</li>
+                      {outputValue.map((value, index) => {
+                          return (
+                              <li key={index} className="answer-field">{value}</li>
                           )
                       })}
                   </ul>

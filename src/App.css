@@ -12,11 +12,11 @@
 }
 .main-container{
   display: flex;
-
   column-gap: 20px;
+  z-index: 30;
 }
 .calculator{
-
+position: relative;
   padding: 30px 60px;
   background-color: #A5C2F4;
   border-radius: 14px;
@@ -81,4 +81,47 @@
   align-items: center;
   font-size: 25px;
   color: #2f75e3;
+}
+
+.settings{
+  top: 2px;
+  left: 2px;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+
+.languageCahnger{
+  z-index: -1;
+  padding: 0;
+  top: 0;
+  position: absolute;
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  row-gap: 10px;
+  transition: ease-in-out 0.5s;
+
+}
+.language-menu-active{
+  left: -50px;
+}
+.language-menu{
+  left: 0;
+}
+.languageCahnger button{
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  color: #2f75e3;
+  cursor: pointer;
 }

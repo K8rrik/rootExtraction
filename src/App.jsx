@@ -15,7 +15,7 @@ function App() {
     }
 
 
-    const [languageBlock, setLanguageBlock] = useState(true)
+    const [languageBlock, setLanguageBlock] = useState(false)
 
     const changeLanguageBlock = () => {
         setLanguageBlock(!languageBlock)

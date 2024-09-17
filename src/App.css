@@ -16,7 +16,7 @@
   z-index: 30;
 }
 .calculator{
-position: relative;
+  position: relative;
   padding: 30px 60px;
   background-color: #A5C2F4;
   border-radius: 14px;
@@ -124,4 +124,24 @@ position: relative;
   font-size: 14px;
   color: #2f75e3;
   cursor: pointer;
+}
+
+@media (max-width: 945px) {
+  .main-container{
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}
+@media (max-width: 700px) {
+  .buttons{
+    flex-direction: column;
+    row-gap: 40px;
+  }
+  .container h1 {
+    font-size: 20px;
+  }
+  .calculator{
+    padding: 15px 30px;
+    height: auto;
+  }
 }

@@ -27,3 +27,9 @@
     border-radius: 7px;
     text-align: center;
 }
+
+@media (max-width: 700px) {
+   .answers{
+       margin: 10px;
+   }
+}

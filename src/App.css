@@ -318,9 +318,6 @@
     flex-direction: column;
     row-gap: 40px;
   }
-  .container{
-    height: auto;
-  }
   .container h1 {
     font-size: 20px;
     margin-top: 75px;
@@ -328,6 +325,7 @@
   .calculator{
     padding: 15px 30px;
     height: auto;
+    margin: 10px;
   }
   .buttons-nums{
     display: none;

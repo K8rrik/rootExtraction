@@ -1,0 +1,15 @@
+{
+  "programNameHeader": "استخراج الجذر التربيعي",
+  "inputPlaceholder":"أدخل رقمًا أو حرفًا أو صيغة",
+  "answersHeader": "الإجابات:",
+  "supportHeader": "الدعم",
+  "supportDocuments": "الوثائق",
+  "supportManualUser": "دليل المستخدم",
+  "supportFeedback": "خدمة الدعم",
+  "supportTelegram": "بوت تيليجرام",
+  "languageHeader": "اللغة",
+  "extarctRoot": "احسب الجذر",
+  "error1empty": "أدخل قيمة",
+  "error2Trig": "يجب أن تكون الوسيطة في النطاق [-1، 1]",
+  "error3All": "أدخل قيمة صحيحة"
+}

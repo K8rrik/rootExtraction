@@ -1,0 +1,15 @@
+{
+  "programNameHeader": "Quadratwurzel berechnung",
+  "inputPlaceholder":"Geben Sie eine Zahl, einen Buchstaben oder eine Formel ein",
+  "answersHeader": "Antworten:",
+  "supportHeader": "Hilfe",
+  "supportDocuments": "Dokumentation",
+  "supportManualUser": "Benutzerhandbuch",
+  "supportFeedback": "Kundendienst",
+  "supportTelegram": "Telegramm-Bot",
+  "languageHeader": "Sprache",
+  "extarctRoot": "Wurzel berechnen",
+  "error1empty": "Geben Sie einen Wert ein",
+  "error2Trig": "Das Argument muss im Bereich [-1, 1] liegen",
+  "error3All": "Geben Sie einen gültigen Wert ein"
+}

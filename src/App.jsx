@@ -4,8 +4,11 @@ import {useState} from "react";
 import {complex, sqrt} from "mathjs"
 import {simplify,sqrt as sqrtAlgebrite} from "algebrite"
 import {useTranslation} from "react-i18next"
-import Ilanguage from "../public/locales/images/language.svg"
-
+import Ilanguage from "./locales/images/language.svg"
+import IuserManual from "./locales/images/userManual.svg"
+import IsupportPhone from "./locales/images/supportPhone.svg"
+import Isupport from "./locales/images/support.svg"
+import IsupportTelegram from "./locales/images/supportTelegram.svg"
 
 function App() {
     const {t, i18n} = useTranslation();
@@ -16,45 +19,70 @@ function App() {
 
 
     const [languageBlock, setLanguageBlock] = useState(false)
-
+    const [supportBlock, setSupportBlock] = useState(false)
     const changeLanguageBlock = () => {
         setLanguageBlock(!languageBlock)
+    }
+    const changeSupportBlock = () => {
+        setSupportBlock(!supportBlock)
     }
     const [inputValue, setInputValue] = useState('')
     const [outputValue, setOutputValue] = useState([])
     const [decimalPlaces, setDecimalPlaces] = useState(2)
-
+    const [isError,setIsError] = useState(false)
+    const [errorContent, setErrorContent] = useState("")
 
 
     const extraction = () => {
         try {
-            const trigPattern = /(sin|cos|tan|cot|sec|csc)\s*\(\s*[^)\s][^)]*\s*\)/i;
-            const cleanedInput = inputValue.trim();
-            if (trigPattern.test(cleanedInput)) {
-                const trigonomNumber = simplify(inputValue)
-                setOutputValue([sqrtAlgebrite(trigonomNumber).toString()])
+            const normalizedInput = inputValue.replace(/,/g, ".");
+
+            const trigPattern = /(sin|cos|tan|cot|sec|csc)\s*\(\s*([^)\s][^)]*)\s*\)/i;
+            const cleanedInput = normalizedInput.trim();
+            if (cleanedInput == ""){
+                setIsError(true)
+                setErrorContent(`Error: ${t('error1empty')}`);
             }
-            else{
-                const complexNumber = complex(inputValue);
+            else if (cleanedInput === "0"){
+                setOutputValue(["0"])
+            }
+            else if (trigPattern.test(cleanedInput)) {
+                const match = trigPattern.exec(cleanedInput);
+                const trigFunction = match[1];
+                const trigArgument = parseFloat(match[2]);
+                if ((trigFunction.toLowerCase() === "sin" || trigFunction.toLowerCase() === "cos") && (trigArgument < -1 || trigArgument > 1)) {
+                    setIsError(true);
+                    setErrorContent(`Error: ${t('error2Trig')}`);
+                    setOutputValue([]);
+                } else {
+                setIsError(false)
+                const trigonomNumber = simplify(normalizedInput)
+                setOutputValue([sqrtAlgebrite(trigonomNumber).toString()])
+                }
+            } else{
+                const complexNumber = complex(normalizedInput);
                 const roots = sqrt(complexNumber);
 
                 if (roots.im === 0) {
+                    setIsError(false)
                     setOutputValue([`${formatNumber(roots.re)}`, `${-formatNumber(roots.re)}`]);
-
                 }
-
                 else{
+                    setIsError(false)
                     setOutputValue([
                         `${formatNumber(roots.re)} ${formatSignImaginaryP(formatNumber(roots.im))}`,
                         `${-formatNumber(roots.re)} ${formatSignImaginaryM(formatNumber(roots.im))}`
                     ])
-                    console.log(roots.re.toFixed(decimalPlaces))
                 }
             }
 
         } catch (error) {
-            console.log(error);
-            setOutputValue(['Ошибка: введите корректное число']);
+            console.log(error)
+            setIsError(true)
+            setErrorContent(`Error: ${t('error3All')}`)
+            setOutputValue([])
+
+
         }
     }
 
@@ -88,24 +116,81 @@ function App() {
     }
   return (
       <div className="container">
+
+          <button onClick={changeSupportBlock} className="support"><img src={Isupport}/></button>
+          <div className={` supportBlock ${supportBlock ? "support-block-active" : "support-block"}`}>
+              <h2>{t('supportHeader')}</h2>
+              <ul className="support-user">
+                  <li>
+                      <div><h3>{t('supportDocuments')}:</h3></div>
+                      <div><img src={IuserManual}/></div>
+                      <div>{t('supportManualUser')}</div>
+                  </li>
+                  <li>
+                      <div><h3>{t('supportFeedback')}</h3></div>
+                      <a href="tel:+79124869347">
+                          <div><img src={IsupportPhone}/></div>
+                          <div>+7 912 486-93-47</div>
+                      </a>
+                  </li>
+                  <li>
+                  <div><img src={IsupportTelegram}/></div>
+                      <div>{t('supportTelegram')}</div>
+                  </li>
+              </ul>
+          </div>
+
+
+
+          <button onClick={changeLanguageBlock} className="language"><img src={Ilanguage}/></button>
+          <div className={`languageBlock ${languageBlock ? "language-block-active" : "language-block"}`}>
+              <h2>{t('languageHeader')}</h2>
+              <ul>
+                  <li>
+                      <button onClick={() => changeLanguage('ru')}>Русский</button>
+                  </li>
+                  <li>
+                      <button onClick={() => changeLanguage('en')}>English</button>
+                  </li>
+                  <li>
+                      <button onClick={() => changeLanguage('ge')}>Deutsch</button>
+                  </li>
+                  <li>
+                      <button onClick={() => changeLanguage('sp')}>Español</button>
+                  </li>
+                  <li>
+                      <button onClick={() => changeLanguage('port')}>Português</button>
+                  </li>
+                  <li>
+                      <button onClick={() => changeLanguage('frnc')}>Français</button>
+                  </li>
+                  <li>
+                      <button onClick={() => changeLanguage('it')}>Italiano</button>
+                  </li>
+                  <li>
+                      <button onClick={() => changeLanguage('greec')}>ελληνικά</button>
+                  </li>
+                  <li>
+                      <button onClick={() => changeLanguage('jpn')}>日本語</button>
+                  </li>
+                  <li>
+                      <button onClick={() => changeLanguage('chn')}>中文</button>
+                  </li>
+                  <li>
+                      <button onClick={() => changeLanguage('arab')}>عربي</button>
+                  </li>
+                  <li>
+                      <button onClick={() => changeLanguage('hindi')}>हिंदी</button>
+                  </li>
+              </ul>
+          </div>
+
+
           <h1>{t('programNameHeader')}</h1>
           <div className="main-container">
 
 
               <div className="calculator">
-                  <button onClick={changeLanguageBlock} className="settings"><img className="settings" src={Ilanguage}/>
-                  </button>
-                  <ul className={`languageCahnger ${languageBlock ? "language-menu-active" : "language-menu"}`}>
-                      <li>
-                          <button onClick={() => changeLanguage('ru')}>RU</button>
-                      </li>
-                      <li>
-                          <button onClick={() => changeLanguage('en')}>ENG</button>
-                      </li>
-                      <li>
-                          <button onClick={() => changeLanguage('chn')}>CHN</button>
-                      </li>
-                  </ul>
                   <div className="graphic-input">
                       <input
                           type="text"
@@ -122,9 +207,9 @@ function App() {
                           <button onClick={() => handleChangeKeyboard(inputValue + ' - ')}>-</button>
                           <button onClick={() => handleChangeKeyboard(inputValue + ' + ')}>+</button>
                           <button onClick={() => handleChangeKeyboard(inputValue + '0')}>0</button>
-                          <button onClick={() => extraction()}>√</button>
+                          <button onClick={() => handleChangeKeyboard(inputValue + '.')}>.</button>
                           <button onClick={() => {
-                              handleChangeKeyboard(''), setOutputValue([], setDecimalPlaces(2))
+                              handleChangeKeyboard(''), setOutputValue([], setDecimalPlaces(2), setIsError(false))
                           }}>c
                           </button>
                           <button onClick={() => handleChangeKeyboard(inputValue + 'i')}>i</button>
@@ -144,11 +229,18 @@ function App() {
                           <button onClick={() => handleChangeKeyboard(inputValue + '8')}>8</button>
                           <button onClick={() => handleChangeKeyboard(inputValue + '9')}>9</button>
                       </div>
+
                   </div>
+                  <button className="enterRoot" onClick={() => extraction()}>{t("extarctRoot")}  √</button>
               </div>
               <div className="answers">
                   <h3 className="answer-header">{t('answersHeader')}</h3>
                   <ul className="answer-fields">
+                      {isError ?
+                          <div className="error-message">
+                              {errorContent}
+                          </div> :
+                          null}
                       {outputValue.map((value, index) => {
                           return (
                               <li key={index} className="answer-field">{value}</li>

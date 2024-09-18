@@ -1,0 +1,15 @@
+{
+  "programNameHeader": "平方根の抽出",
+  "inputPlaceholder":"数値、文字、または式を入力",
+  "answersHeader": "回答:",
+  "supportHeader": "サポート",
+  "supportDocuments": "ドキュメント",
+  "supportManualUser": "ユーザーマニュアル",
+  "supportFeedback": "サポートサービス",
+  "supportTelegram": "テレグラムボット",
+  "languageHeader": "言語",
+  "extarctRoot": "ルートを計算",
+  "error1empty": "値を入力してください",
+  "error2Trig": "引数は[-1, 1]の範囲内でなければなりません",
+  "error3All": "有効な値を入力してください"
+}

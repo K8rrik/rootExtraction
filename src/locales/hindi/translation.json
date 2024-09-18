@@ -1,0 +1,15 @@
+{
+  "programNameHeader": "वर्गमूल निष्कर्षण",
+  "inputPlaceholder":"संख्या, अक्षर, या सूत्र दर्ज करें",
+  "answersHeader": "उत्तर:",
+  "supportHeader": "सहायता",
+  "supportDocuments": "दस्तावेज़",
+  "supportManualUser": "उपयोगकर्ता मार्गदर्शिका",
+  "supportFeedback": "सहायता सेवा",
+  "supportTelegram": "टेलीग्राम बॉट",
+  "languageHeader": "भाषा",
+  "extarctRoot": "मूल निकालें",
+  "error1empty": "एक मान दर्ज करें",
+  "error2Trig": "तर्क को सीमा [-1, 1] के भीतर होना चाहिए",
+  "error3All": "एक मान्य मान दर्ज करें"
+}

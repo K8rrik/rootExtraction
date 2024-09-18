@@ -1,0 +1,15 @@
+{
+  "programNameHeader": "Estrazione della Radice Quadrata",
+  "inputPlaceholder":"Inserisci un numero, una lettera o una formula",
+  "answersHeader": "Risposte:",
+  "supportHeader": "Supporto",
+  "supportDocuments": "Documentazione",
+  "supportManualUser": "Manuale Utente",
+  "supportFeedback": "Servizio di supporto",
+  "supportTelegram": "Bot Telegram",
+  "languageHeader": "Lingua",
+  "extarctRoot": "Calcola Radice",
+  "error1empty": "Inserisci un valore",
+  "error2Trig": "L'argomento deve essere nell'intervallo [-1, 1]",
+  "error3All": "Inserisci un valore valido"
+}

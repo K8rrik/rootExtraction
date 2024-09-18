@@ -1,0 +1,15 @@
+{
+  "programNameHeader": "Извелечение квадратного корня",
+  "inputPlaceholder":"Введите число, букву или формулу",
+  "answersHeader": "Ответы:",
+  "supportHeader": "Помощь",
+  "supportDocuments": "Документация",
+  "supportManualUser": "Руководство пользователя",
+  "supportFeedback": "Служба поддержки",
+  "supportTelegram": "Телеграм бот",
+  "languageHeader": "Язык",
+  "extarctRoot": "Вычислить корень",
+  "error1empty": "Введите значение",
+  "error2Trig": "Аргумент должен быть в диапазоне [-1, 1]",
+  "error3All": "Введите корректное значение"
+}

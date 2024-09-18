@@ -1,0 +1,15 @@
+{
+  "programNameHeader": "提取平方根",
+  "inputPlaceholder":"输入数字、字母或公式",
+  "answersHeader": "答案:",
+  "supportHeader": "支持",
+  "supportDocuments": "文档",
+  "supportManualUser": "用户手册",
+  "supportFeedback": "支持服务",
+  "supportTelegram": "电报机器人",
+  "languageHeader": "语言",
+  "extarctRoot": "计算根",
+  "error1empty": "输入一个值",
+  "error2Trig": "参数必须在[-1, 1]范围内",
+  "error3All": "输入有效的值"
+}

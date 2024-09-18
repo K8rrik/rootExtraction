@@ -1,0 +1,15 @@
+{
+  "programNameHeader": "Extração de Raiz Quadrada",
+  "inputPlaceholder":"Digite um número, letra ou fórmula",
+  "answersHeader": "Respostas:",
+  "supportHeader": "Suporte",
+  "supportDocuments": "Documentação",
+  "supportManualUser": "Manual do Usuário",
+  "supportFeedback": "Serviço de suporte",
+  "supportTelegram": "Bot do Telegram",
+  "languageHeader": "Idioma",
+  "extarctRoot": "Calcular raiz",
+  "error1empty": "Digite um valor",
+  "error2Trig": "O argumento deve estar no intervalo [-1, 1]",
+  "error3All": "Digite um valor válido"
+}

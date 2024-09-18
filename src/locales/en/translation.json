@@ -1,0 +1,15 @@
+{
+  "programNameHeader": "Square Root Extraction",
+  "inputPlaceholder":"Enter a number, letter, or formula",
+  "answersHeader": "Answers:",
+  "supportHeader": "Support",
+  "supportDocuments": "Documentation",
+  "supportManualUser": "User Manual",
+  "supportFeedback": "Support Service",
+  "supportTelegram": "Telegram Bot",
+  "languageHeader": "Language",
+  "extarctRoot": "Calculate Root",
+  "error1empty": "Enter a value",
+  "error2Trig": "The argument must be in the range [-1, 1]",
+  "error3All": "Enter a valid value"
+}

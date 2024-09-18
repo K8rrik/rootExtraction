@@ -1,0 +1,15 @@
+{
+  "programNameHeader": "Extracción de raíz cuadrada",
+  "inputPlaceholder":"Ingrese un número, letra o fórmula",
+  "answersHeader": "Respuestas:",
+  "supportHeader": "Soporte",
+  "supportDocuments": "Documentación",
+  "supportManualUser": "Manual de Usuario",
+  "supportFeedback": "Servicio de soporte",
+  "supportTelegram": "Bot de Telegram",
+  "languageHeader": "Idioma",
+  "extarctRoot": "Calcular raíz",
+  "error1empty": "Ingrese un valor",
+  "error2Trig": "El argumento debe estar en el rango [-1, 1]",
+  "error3All": "Ingrese un valor válido"
+}

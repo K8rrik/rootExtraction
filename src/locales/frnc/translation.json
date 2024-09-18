@@ -1,0 +1,15 @@
+{
+  "programNameHeader": "Extraction de la racine carrée",
+  "inputPlaceholder":"Entrez un nombre, une lettre ou une formule",
+  "answersHeader": "Réponses:",
+  "supportHeader": "Aide",
+  "supportDocuments": "Documentation",
+  "supportManualUser": "Manuel de l'utilisateur",
+  "supportFeedback": "Service d'assistance",
+  "supportTelegram": "Bot Telegram",
+  "languageHeader": "Langue",
+  "extarctRoot": "Calculer la racine",
+  "error1empty": "Entrez une valeur",
+  "error2Trig": "L'argument doit être dans l'intervalle [-1, 1]",
+  "error3All": "Entrez une valeur valide"
+}

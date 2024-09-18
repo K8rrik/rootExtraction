@@ -1,0 +1,15 @@
+{
+  "programNameHeader": "Εξαγωγή Τετραγωνικής Ρίζας",
+  "inputPlaceholder":"Εισαγάγετε έναν αριθμό, γράμμα ή τύπο",
+  "answersHeader": "Απαντήσεις:",
+  "supportHeader": "Βοήθεια",
+  "supportDocuments": "Τεκμηρίωση",
+  "supportManualUser": "Εγχειρίδιο Χρήστη",
+  "supportFeedback": "Υπηρεσία Υποστήριξης",
+  "supportTelegram": "Telegram Bot",
+  "languageHeader": "Γλώσσα",
+  "extarctRoot": "Υπολογισμός Ρίζας",
+  "error1empty": "Εισαγάγετε μια τιμή",
+  "error2Trig": "Το όρισμα πρέπει να είναι στο εύρος [-1, 1]",
+  "error3All": "Εισαγάγετε μια έγκυρη τιμή"
+}

@@ -4,11 +4,11 @@ import {useState} from "react";
 import {complex, sqrt} from "mathjs"
 import {simplify,sqrt as sqrtAlgebrite} from "algebrite"
 import {useTranslation} from "react-i18next"
-import Ilanguage from "./locales/images/language.svg"
-import IuserManual from "./locales/images/userManual.svg"
-import IsupportPhone from "./locales/images/supportPhone.svg"
-import Isupport from "./locales/images/support.svg"
-import IsupportTelegram from "./locales/images/supportTelegram.svg"
+import Ilanguage from "./images/language.svg"
+import IuserManual from "./images/userManual.svg"
+import IsupportPhone from "./images/supportPhone.svg"
+import Isupport from "./images/support.svg"
+import IsupportTelegram from "./images/supportTelegram.svg"
 
 function App() {
     const {t, i18n} = useTranslation();

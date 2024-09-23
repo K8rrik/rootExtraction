@@ -1,6 +1,6 @@
 {
   "programNameHeader": "Извелечение квадратного корня",
-  "inputPlaceholder":"Введите число, букву или формулу",
+  "inputPlaceholder":"Введите число или формулу",
   "answersHeader": "Ответы:",
   "supportHeader": "Помощь",
   "supportDocuments": "Документация",
@@ -9,7 +9,7 @@
   "supportTelegram": "Телеграм бот",
   "languageHeader": "Язык",
   "extarctRoot": "Вычислить корень",
-  "error1empty": "Введите значение",
-  "error2Trig": "Аргумент должен быть в диапазоне [-1, 1]",
-  "error3All": "Введите корректное значение"
+  "error1empty": "Ошибка: Введите значение",
+  "error2Trig": "Ошибка: Аргумент должен быть в диапазоне [-1, 1]",
+  "error3All": "Ошибка: Введите корректное значение"
 }

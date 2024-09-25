@@ -51,7 +51,7 @@ function App() {
 
             if (normalizedInput === "") {
                 setIsError(true);
-                setErrorContent(`Ошибка: ${t("error1empty")}`);
+                setErrorContent(`${t("error1empty")}`);
                 setOutputValue([]);
             } else if (normalizedInput === "0") {
                 setIsError(false);
@@ -62,13 +62,17 @@ function App() {
                 const trigFunction = match[1].toLowerCase();
                 const trigArgument = parseFloat(match[2]);
 
-                // Проверка аргументов тригонометрических функций sin и cos
+                // Проверка аргументов тригонометрических функций sin и cos и cot
                 if (
-                    (trigFunction === "sin" || trigFunction === "cos") &&
-                    (trigArgument < -1 || trigArgument > 1)
+                    ((trigFunction === "sin" || trigFunction === "cos") &&
+                        (trigArgument < -1 || trigArgument > 1))
                 ) {
                     setIsError(true);
-                    setErrorContent(`Ошибка: ${t("error2Trig")}`);
+                    setErrorContent(`${t("error2Trig")}`);
+                    setOutputValue([]);
+                } else if( ((trigFunction === "cot") && (trigArgument == 0))){
+                    setIsError(true);
+                    setErrorContent(`${t("error3All")}`);
                     setOutputValue([]);
                 } else {
                     setIsError(false);
@@ -88,18 +92,36 @@ function App() {
                     setOutputValue([]);
                 } else if (/^[a-zA-Z]$/.test(base)) {
                     // Буквенная переменная
-                    if (exponent === 2) {
-                        // Квадратный корень из a^2 равен |a|
-                        setIsError(false);
-                        setOutputValue([`abs(${base})`]);
-                    } else if (exponent === 1)  {
-                        // Квадратный корень из a равен sqrt(a)
-                        setIsError(false);
-                        setOutputValue([`(${base})^(1/2)`]);
+                    if (base.toLowerCase() === 'i') {
+                        // Специальная обработка для мнимой единицы
+                        if (exponent === 2) {
+                            // (i)^2 = -1
+                            setIsError(false);
+                            setOutputValue(["-1"]);
+                        } else if (exponent === 1)  {
+                            // Корень из i
+                            setIsError(false);
+                            setOutputValue([`sqrt(i)`]);
+                        } else {
+                            // Для других степеней можно добавить дополнительную логику
+                            setIsError(false);
+                            setOutputValue([`(i)^${exponent}`]);
+                        }
                     } else {
-                        // Для экспонент >1 отображаем корень соответствующей степени
-                        setIsError(false);
-                        setOutputValue([`(${normalizedInput})^(1/2)`]);
+                        // Обработка других буквенных переменных
+                        if (exponent === 2) {
+                            // Квадратный корень из a^2 равен |a|
+                            setIsError(false);
+                            setOutputValue([`abs(${base})`]);
+                        } else if (exponent === 1)  {
+                            // Квадратный корень из a равен sqrt(a)
+                            setIsError(false);
+                            setOutputValue([`(${base})^(1/2)`]);
+                        } else {
+                            // Для экспонент >1 отображаем корень соответствующей степени
+                            setIsError(false);
+                            setOutputValue([`(${normalizedInput})^(1/2)`]);
+                        }
                     }
                 } else if (/^\d+$/.test(base)) {
                     // Числовая база
@@ -131,8 +153,16 @@ function App() {
                         }
                     }
                 }
+            } else if (normalizedInput === 'i' || normalizedInput === '-i') {
+                // Специальная обработка для мнимой единицы
+                setIsError(false);
+                if (normalizedInput === 'i') {
+                    setOutputValue(['i']);
+                } else {
+                    setOutputValue(['-i']);
+                }
             } else if (/^[a-zA-Z]$/.test(normalizedInput)) {
-                // Обработка одиночной буквы, например "a"
+                // Обработка одиночной буквы, кроме 'i', например "a"
                 setIsError(false);
                 setOutputValue([`(${normalizedInput})^(1/2)`]);
             } else if (/^[a-zA-Z]+$/.test(normalizedInput)) {
@@ -212,6 +242,54 @@ function App() {
         }
         setInputValue(updatedValue);
     };
+    const handleClick = (event) => {
+        const currentLanguage = i18n.language;
+        let link;
+
+        switch (currentLanguage) {
+            case 'en':
+                link = 'https://docs.google.com/document/d/1m2aSXjuhuZvuJLlu27LQzUK20aTKoxMYp86lFfZcFyQ/edit?hl=ru';
+                break;
+            case 'ru':
+                link = 'https://docs.google.com/document/d/1XsbdcK0ES9OOKTmGoPl0A2_ZnS3NqqRM-ZoyQ6pBwvk/edit?hl=ru';
+                break;
+            case 'ge':
+                link = 'https://docs.google.com/document/d/1YafKGkAHZLcnDiYbL76Kw92b32ZC8mQCbKfzNUXJQis/edit?hl=ru#heading=h.8uwsb8tf0te';
+                break;
+            case 'sp':
+                link = 'https://docs.google.com/document/d/1XupCw0wONRiWrJcsnseJ6tlf8upEXeoyVwxFmJJQEnc/edit?hl=ru#heading=h.dm379310flza';
+                break;
+            case 'port':
+                link = 'https://docs.google.com/document/d/1n0rKbC3kuP23X_J-gaiS8KnmLuunmiERt3tPaHNvTl0/edit?hl=ru';
+                break;
+            case 'frnc':
+                link = 'https://docs.google.com/document/d/1I6Uj_-UzRn_Sx7C27tY0D5Xb_7ncvEx8L_Cy52hR0tg/edit?hl=ru';
+                break;
+            case 'it':
+                link = 'https://docs.google.com/document/d/1mM4wyQUrSeaXPzoHYQTMNP5rc9en_pTS15HwANCXnKQ/edit?hl=ru';
+                break;
+            case 'greec':
+                link = 'https://docs.google.com/document/d/1nBR-QGfI-81HiBfQk-aNpznUFs9qS7kQwsCQTQ1yJKo/edit?hl=ru';
+                break;
+            case 'jpn':
+                link = 'https://docs.google.com/document/d/1N0Qmzb9FO6D_gn6LSXZKvUlqWm7X332ZktiXqMESg6Q/edit?hl=ru';
+                break;
+            case 'chn':
+                link = 'https://docs.google.com/document/d/1nLjs7gPzaP24t3pHhJephO9aK2Sta8Y4z8WbD3VrU8E/edit?hl=ru';
+                break;
+            case 'arab':
+                link = 'https://docs.google.com/document/d/1Iw3Y1EV-SLdkBLHLxOILkudSTHLq72jREC_R39FTRBQ/edit?hl=ru';
+                break;
+            case 'hindi':
+                link = 'https://docs.google.com/document/d/1pBUt_ZPdyau3zhvV_KNwXq5EWYiX7RJfVHxAAnRcTQA/edit?hl=ru';
+                break;
+            default:
+                link = 'https://docs.google.com/document/d/1m2aSXjuhuZvuJLlu27LQzUK20aTKoxMYp86lFfZcFyQ/edit?hl=ru';
+                break;
+        }
+
+        event.currentTarget.href = link;
+    };
 
     return (
         <div className="container">
@@ -223,6 +301,7 @@ function App() {
                 <h2>{t("supportHeader")}</h2>
                 <ul className="support-user">
                     <li>
+                        <a href="#" target="_blank" onClick={handleClick}>
                         <div>
                             <h3>{t("supportDocuments")}:</h3>
                         </div>
@@ -230,6 +309,7 @@ function App() {
                             <img src={IuserManual} alt="Руководство пользователя" />
                         </div>
                         <div>{t("supportManualUser")}</div>
+                        </a>
                     </li>
                     <li>
                         <div>
@@ -243,10 +323,12 @@ function App() {
                         </a>
                     </li>
                     <li>
-                        <div>
-                            <img src={IsupportTelegram} alt="Поддержка в Telegram" />
-                        </div>
-                        <div>{t("supportTelegram")}</div>
+                        <a href="https://t.me/artemprosupport_bot" target="_blank" onClick={() => setSupportBlock(false)}>
+                            <div>
+                                <img src={IsupportTelegram} alt="Поддержка в Telegram" />
+                            </div>
+                            <div>{t("supportTelegram")}</div>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -328,7 +410,7 @@ function App() {
                                     setIsError(false);
                                 }}
                             >
-                                C
+                                c
                             </button>
                             <button onClick={() => handleChangeKeyboard(inputValue + "i")}>i</button>
                             <button onClick={() => handleDecimalPlacesChange(-1)}>&lt;</button>
